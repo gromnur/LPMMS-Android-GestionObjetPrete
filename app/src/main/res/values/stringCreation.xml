@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ajout_titre">Ajouter un prêt</string>
+    <string name="ajout_libelle">Libelle :</string>
+    <string name="ajout_description">Description :</string>
+    <string name="ajout_nom">Nom :</string>
+    <string name="ajout_prenom">Prenom :</string>
+    <string name="ajout_tel">Téléphone : </string>
+    <string name="ajout_commentaire">Commentaire : </string>
+
+
+</resources>
