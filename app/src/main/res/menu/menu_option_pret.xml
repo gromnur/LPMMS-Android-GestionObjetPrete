@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  menu d'options pour l'application qui gère les prêts :
+      ajouter un prêt, rechercher les prêts à une personne, rechercher les prêts par un mot, rechercher les prêts par date -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item
+	    android:id="@+id/ajout_pret"
+	    android:title="@string/option_ajouter" />
+	<item
+	    android:id="@+id/recherche_personne"
+	    android:title="@string/option_recherche_personne" />
+	<item
+		android:id="@+id/recherche_mot"
+		android:title="@string/option_recherche_mot" />
+	<item
+		android:id="@+id/recherche_date"
+		android:title="@string/option_recherche_date" />
+	<item
+	    android:id="@+id/annuler_menu_option"
+	    android:title="@string/option_annuler" />
+</menu>
+   

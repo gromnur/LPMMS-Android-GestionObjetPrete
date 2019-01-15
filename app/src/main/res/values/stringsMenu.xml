@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="option_ajouter">Ajouter un prêt</string>
+    <string name="option_recherche_personne">Recherche par emprunteur</string>
+    <string name="option_recherche_mot">Recherche par désignation</string>
+    <string name="option_recherche_date">Recherche par une date</string>
+    <string name="option_visualiser">Visualiser</string>
+    <string name="option_modifier">Modifier</string>
+    <string name="option_supprimer">Supprimer</string>
+    <string name="option_annuler">Annuler</string>
+
+</resources>
