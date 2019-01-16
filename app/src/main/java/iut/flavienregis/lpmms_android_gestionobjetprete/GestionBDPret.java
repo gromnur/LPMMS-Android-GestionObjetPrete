@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class GestionDBPret extends SQLiteOpenHelper {
+public class GestionBDPret extends SQLiteOpenHelper {
 
-    private static GestionDBPret instancePret;
+    private static GestionBDPret instancePret;
 
     public static final String PRET_CLE = "_id";
 
@@ -60,13 +60,13 @@ public class GestionDBPret extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + NOM_TABLE_PRET + " ;";
 
 
-    private GestionDBPret(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private GestionBDPret(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public static synchronized GestionDBPret getInstance(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public static synchronized GestionBDPret getInstance(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         if (instancePret == null) {
-            instancePret = new GestionDBPret(context, name, factory, version);
+            instancePret = new GestionBDPret(context, name, factory, version);
         }
 
         return instancePret;
