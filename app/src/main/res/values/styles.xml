@@ -10,10 +10,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="titre_page">
+        <item name="android:textSize">@dimen/taille_titre</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">15dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="ajout_text_view">
+        <item name="android:layout_marginLeft">@dimen/marge_gauche_textiew</item>
     </style>
 
     <style name="ajout_edit_text">
+        <item name="android:layout_width">match_parent</item>
     </style>
 
 </resources>

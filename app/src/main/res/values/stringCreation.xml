@@ -2,12 +2,15 @@
 <resources>
 
     <string name="ajout_titre">Ajouter un prêt</string>
-    <string name="ajout_libelle">Libelle :</string>
+    <string name="ajout_libelle">Désignation :</string>
     <string name="ajout_description">Description :</string>
     <string name="ajout_nom">Nom :</string>
     <string name="ajout_prenom">Prenom :</string>
     <string name="ajout_tel">Téléphone : </string>
     <string name="ajout_commentaire">Commentaire : </string>
+    <string name="ajout_photo">Prendre une photo : </string>
+    <string name="bouton_photo">Camera</string>
+    <string name="ajout_date">Date du prêt :</string>
 
 
 </resources>
