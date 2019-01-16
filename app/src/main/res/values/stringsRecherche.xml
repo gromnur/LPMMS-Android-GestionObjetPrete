@@ -1,0 +1,4 @@
+<resources>
+    <string name="message_recherche_personne">Saisir le nom de l\'emprunteur</string>
+    <string name="aide_recherche_personne">Nom</string>
+</resources>
