@@ -3,6 +3,7 @@ package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 public class ListAccueil extends AppCompatActivity {
 
 
-    private ArrayList<String> liste;
+    private GestionPretDAO gestionPretDAO;
 
     private ArrayAdapter<String> adaptateur;
 
@@ -44,9 +46,7 @@ public class ListAccueil extends AppCompatActivity {
 
         listePret = findViewById(R.id.liste_pret);
 
-        liste = new ArrayList<>();
-
-        adaptateur = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, liste);
+        gestionPretDAO = GestionPretDAO.getInstanceDAO(this);
 
         listePret.setAdapter(adaptateur);
 
@@ -68,7 +68,6 @@ public class ListAccueil extends AppCompatActivity {
             case R.id.modifier_pret:
                 break;
             case R.id.supprimer_pret:
-                adaptateur.remove(liste.get(information.position));
                 break;
             case R.id.annuler:
                 break;

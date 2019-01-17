@@ -38,7 +38,7 @@ public class GestionPretDAO {
         return base.rawQuery(GestionPret.REQUETTE_TOUT_SELECTIONNER_PRET, null);
     }
 
-    public int createPret(String designation, String description, String photo, String nom, String prenom, String infoSupp) {
+    public int createPret(String designation, String description, String photo , String nom, String prenom, String infoSupp) {
         ContentValues enregistrement = new ContentValues();
 
 
@@ -64,4 +64,5 @@ public class GestionPretDAO {
     public int findByDesignationPret(int designation) {
         return 0;
     }
+
 }

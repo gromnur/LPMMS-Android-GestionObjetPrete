@@ -52,7 +52,7 @@ public class GestionPret extends SQLiteOpenHelper {
                     + PRET_DATE + " DATE NOT NULL, "
                     + PRET_NOM + " VARCHAR(256) NOT NULL, "
                     + PRET_PRENOM + " VARCHAR(256) NOT NULL, "
-                    + PRET_TEL + " INTEGER(10), "
+                    + PRET_TEL + " VARCHAR(10), "
                     + PRET_INFO_SUPP + " BLOB "
                     + ");";
 
