@@ -68,7 +68,7 @@
             />
     </TableRow>
 
-    <!-- Ligne Prenom -->
+    <!-- Ligne date -->
     <TableRow>
         <TextView
             style="@style/ajout_text_view"
@@ -77,10 +77,13 @@
         <EditText
             android:id="@+id/ajout_date"
             style="@style/ajout_edit_text"
+            android:ems="10"
+            android:inputType="date"
+            android:enabled="false"
             />
     </TableRow>
 
-    <!-- Ligne Prenom -->
+    <!-- Ligne commentaire -->
     <TableRow>
         <TextView
             style="@style/ajout_text_view"
@@ -89,10 +92,11 @@
         <EditText
             android:id="@+id/commentaire"
             style="@style/ajout_edit_text"
+            android:inputType="textMultiLine"
             />
     </TableRow>
 
-    <!-- Ligne Prenom -->
+    <!-- Ligne Photo -->
     <TableRow>
         <TextView
             style="@style/ajout_text_view"
@@ -101,9 +105,20 @@
         <Button
             android:id="@+id/ajout_photo"
             style="@style/ajout_edit_text"
-            android:drawableLeft="@android:drawable/ic_menu_camera"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="wrap_content"
+            android:paddingLeft="115dp"
+            android:paddingRight="115dp"
+            android:drawableLeft="@android:drawable/ic_menu_camera" />
 
-            />
+    </TableRow>
+
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/miniature_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
 
 </TableLayout>
