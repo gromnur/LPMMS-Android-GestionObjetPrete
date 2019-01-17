@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <!-- Titre  -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ajout_titre"
+        style="@style/titre_page"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:layout_marginBottom="15dip"
+        android:background="@color/colorPrimary"
+        style="@style/titre_page"/>
+
+    <!-- Ligne libelle -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_libelle" />
+
+        <EditText
+            android:id="@+id/ajout_libelle"
+            style="@style/ajout_edit_text"
+            />
+    </TableRow>
+
+    <!-- Ligne Description -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_description" />
+
+        <EditText
+            android:id="@+id/ajout_description"
+            style="@style/ajout_edit_text"
+            android:inputType="textMultiLine"
+            />
+    </TableRow>
+
+    <!-- Ligne Nom -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_nom" />
+
+        <EditText
+            android:id="@+id/ajout_nom"
+            style="@style/ajout_edit_text"
+            />
+    </TableRow>
+
+    <!-- Ligne Prenom -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_prenom" />
+
+        <EditText
+            android:id="@+id/ajout_prenom"
+            style="@style/ajout_edit_text"
+            />
+    </TableRow>
+
+    <!-- Ligne date -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_date" />
+
+        <EditText
+            android:id="@+id/ajout_date"
+            style="@style/ajout_edit_text"
+            android:ems="10"
+            android:inputType="date"
+            android:enabled="false"
+            />
+    </TableRow>
+
+    <!-- Ligne commentaire -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_commentaire" />
+
+        <EditText
+            android:id="@+id/commentaire"
+            style="@style/ajout_edit_text"
+            android:inputType="textMultiLine"
+            />
+    </TableRow>
+
+    <!-- Ligne Photo -->
+    <TableRow>
+        <TextView
+            style="@style/ajout_text_view"
+            android:text="@string/ajout_photo" />
+
+        <Button
+            android:id="@+id/ajout_photo"
+            style="@style/ajout_edit_text"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="wrap_content"
+            android:paddingLeft="115dp"
+            android:paddingRight="115dp"
+            android:drawableLeft="@android:drawable/ic_menu_camera" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/miniature_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+</TableLayout>

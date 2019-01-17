@@ -13,20 +13,19 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp" />
 
+    <!-- Titre  -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dip"
-        android:layout_marginBottom="10dip"
-        android:textSize="20dp"
-        android:text="@string/titre_acceuil"/>
+        android:text="@string/titre_accueil"
+        style="@style/titre_page"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dip"
         android:layout_marginBottom="15dip"
-        android:background="#00000F" />
+        android:background="@color/colorPrimary"
+        style="@style/titre_page"/>
 
     <ListView
         android:id="@+id/liste_pret"

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="marge_gauche_titre">20dp</dimen>
     <dimen name="marge_gauche_textiew">10dp</dimen>
     <dimen name="marge_hauteur">5dp</dimen>
+
+    <dimen name="taille_titre">20sp</dimen>
 
 </resources>
