@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,12 +18,12 @@ public class GestionPretDAO {
 
     private static final String NOM_BD = "pret.db";
 
-    private GestionBDPret gestionnaireBase;
+    private GestionPret gestionnaireBase;
 
     private SQLiteDatabase base;
 
     private GestionPretDAO(Context context) {
-        gestionnaireBase = GestionBDPret.getInstance(context, NOM_BD, null, VERSION);
+        gestionnaireBase = GestionPret.getInstance(context, NOM_BD, null, VERSION);
         base = gestionnaireBase.getWritableDatabase();
     }
 
@@ -34,17 +35,20 @@ public class GestionPretDAO {
     }
 
     public Cursor toutSelectionner() {
-        return base.rawQuery(GestionBDPret.REQUETTE_TOUT_SELECTIONNER_PRET, null);
+        return base.rawQuery(GestionPret.REQUETTE_TOUT_SELECTIONNER_PRET, null);
     }
 
     public int createPret(String designation, String description, String photo, String nom, String prenom, String infoSupp) {
         ContentValues enregistrement = new ContentValues();
 
 
-        enregistrement.put(GestionBDPret.PRET_DESIGNATION, designation);
-        enregistrement.put(GestionBDPret.PRET_DESCRIPTION, description);
-        enregistrement.put(GestionBDPret.PRET_NOM, nom);
-        enregistrement.put(GestionBDPret.PRET_PRENOM, prenom);
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+
+        enregistrement.put(GestionPret.PRET_DESIGNATION, designation);
+        enregistrement.put(GestionPret.PRET_DESCRIPTION, description);
+        enregistrement.put(GestionPret.PRET_NOM, nom);
+        enregistrement.put(GestionPret.PRET_PRENOM, prenom);
+        enregistrement.put(GestionPret.PRET_DATE, timeStamp);
 
         return 0;
     }
@@ -54,6 +58,10 @@ public class GestionPretDAO {
     }
 
     public int findByIdPret(int id) {
+        return 0;
+    }
+
+    public int findByDesignationPret(int designation) {
         return 0;
     }
 }
