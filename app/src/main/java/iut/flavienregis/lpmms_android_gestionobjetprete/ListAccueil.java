@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class ListAccueil extends AppCompatActivity {
 
     private ArrayList<String> liste;
 
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.ajout_pret:
+                // Lancer l'activité
                 break;
             case R.id.recherche_personne:
                 break;
