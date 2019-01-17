@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -24,7 +26,6 @@ import java.util.ArrayList;
 
 public class ListAccueil extends AppCompatActivity {
 
-    public static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private ArrayList<String> liste;
 
@@ -32,15 +33,13 @@ public class ListAccueil extends AppCompatActivity {
 
     private ListView listePret;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_accueil);
 
-        Intent mediaChooser = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(mediaChooser, 1);
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         listePret = findViewById(R.id.liste_pret);
@@ -89,8 +88,8 @@ public class ListAccueil extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.ajout_pret:
-                // Lancer l'activité
-
+                Intent intention = new Intent(ListAccueil.this, AjoutEmprunt.class);
+                startActivity(intention);
                 break;
             case R.id.recherche_personne:
                 break;
@@ -102,11 +101,5 @@ public class ListAccueil extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-        }
-    }
+
 }
