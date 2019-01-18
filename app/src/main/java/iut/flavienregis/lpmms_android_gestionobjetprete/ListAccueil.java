@@ -28,10 +28,9 @@ import java.util.ArrayList;
 
 public class ListAccueil extends AppCompatActivity {
 
-
     private GestionPretDAO gestionPretDAO;
 
-    private ArrayAdapter<String> adaptateur;
+    private SimpleCursorAdapter adaptateur;
 
     private ListView listePret;
 
@@ -45,6 +44,22 @@ public class ListAccueil extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         listePret = findViewById(R.id.liste_pret);
+
+        Cursor curseurSurBase = gestionPretDAO.toutSelectionner();
+
+        /* test affichage list pour debug */
+        adaptateur = new SimpleCursorAdapter(this,
+                R.layout.ligne_liste_test,
+                curseurSurBase,
+                new String[] {GestionPret.PRET_DESIGNATION,
+                        GestionPret.PRET_DESCRIPTION,
+                        GestionPret.PRET_NOM,
+                        GestionPret.PRET_PRENOM},
+                new int[] {R.id.designation_pret,
+                        R.id.description_pret,
+                        R.id.nom_pret,
+                        R.id.prenom_pret},
+                0);
 
         gestionPretDAO = GestionPretDAO.getInstanceDAO(this);
 
