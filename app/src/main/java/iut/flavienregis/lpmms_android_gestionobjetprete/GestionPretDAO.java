@@ -52,16 +52,22 @@ public class GestionPretDAO {
         return base.insert(GestionPret.NOM_TABLE_PRET, GestionPret.PRET_DESIGNATION, enregistrement);
     }
 
-    public int deletePret(int id) {
-        return 0;
+    /**
+     * Supprigne une ligne d'une base de données via sont id
+     * @param idPret l'id du pret a supprimer
+     * @return le nombre de ligne supprimées
+     */
+    public int deletePret(int idPret) {
+        String[] argument = {Integer.toString(idPret)};
+        return base.delete(GestionPret.NOM_TABLE_PRET, GestionPret.PRET_CLE + "=?", argument);
     }
 
-    public int findByIdPret(int id) {
-        return 0;
+    public Cursor findByIdPret(int id) {
+        return null;
     }
 
-    public int findByDesignationPret(int designation) {
-        return 0;
+    public Cursor findByDesignationPret(int designation) {
+        return null;
     }
 
 }
