@@ -38,9 +38,8 @@ public class GestionPretDAO {
         return base.rawQuery(GestionPret.REQUETTE_TOUT_SELECTIONNER_PRET, null);
     }
 
-    public int createPret(String designation, String description, String photo , String nom, String prenom, String infoSupp) {
+    public long createPret(String designation, String description, String photo , String nom, String prenom, String infoSupp) {
         ContentValues enregistrement = new ContentValues();
-
 
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 
@@ -50,7 +49,7 @@ public class GestionPretDAO {
         enregistrement.put(GestionPret.PRET_PRENOM, prenom);
         enregistrement.put(GestionPret.PRET_DATE, timeStamp);
 
-        return 0;
+        return base.insert(GestionPret.NOM_TABLE_PRET, GestionPret.PRET_DESIGNATION, enregistrement);
     }
 
     public int deletePret(int id) {
