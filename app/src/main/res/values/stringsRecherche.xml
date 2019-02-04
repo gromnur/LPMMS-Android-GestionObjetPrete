@@ -5,5 +5,8 @@
     <string name="message_recherche_objet">Saisir le nom de l\'objet prêté</string>
     <string name="aide_recherche_objet">Nom de l\'objet</string>
 
+    <string name="message_recherche_mot">Saisir le mot à rechercher</string>
+    <string name="aide_recherche_mot">Mot voulu</string>
+
     <string name="bouton_valider">Valider</string>
 </resources>
