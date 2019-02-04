@@ -1,7 +1,5 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
-
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -77,9 +74,6 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
-
-        // making http call and fetching menu json
-        prepareCart();
     }
 
     @Override
@@ -162,41 +156,6 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
             snackbar.setActionTextColor(Color.YELLOW);
             snackbar.show();
         }
-    }
-
-    /**
-     * method make volley network call and parses json
-     */
-    private void prepareCart() {
-        JsonArrayRequest request = new JsonArrayRequest(URL,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        if (response == null) {
-                            Toast.makeText(getApplicationContext(), "Couldn't fetch the menu! Pleas try again.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-
-                        List<Item> items = new Gson().fromJson(response.toString(), new TypeToken<List<Item>>() {
-                        }.getType());
-
-                        // adding items to cart list
-                        cartList.clear();
-                        cartList.addAll(items);
-
-                        // refreshing recycler view
-                        mAdapter.notifyDataSetChanged();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // error in getting json
-                Log.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        MyApplication.getInstance().addToRequestQueue(request);
     }
 
 }
