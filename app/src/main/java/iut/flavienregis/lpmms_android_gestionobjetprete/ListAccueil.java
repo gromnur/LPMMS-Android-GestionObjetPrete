@@ -1,5 +1,6 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,6 +35,10 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
     private CartListAdapter mAdapter;
     private CoordinatorLayout coordinatorLayout;
     private ArrayAdapter adaptateur;
+
+    public final static int RECHERCHE_DATE = 0;
+    public final static int RECHERCHE_MOT = 1;
+    public final static int RECHERCHE_PERSONNE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,15 +94,15 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
                 break;
             case R.id.recherche_personne:
                 Intent intention2 = new Intent(ListAccueil.this, RecherchePersonne.class);
-                startActivity(intention2);
+                startActivityForResult(intention2, RECHERCHE_PERSONNE);
                 break;
             case R.id.recherche_mot:
                 Intent intention3 = new Intent(ListAccueil.this, RechercheMot.class);
-                startActivity(intention3);
+                startActivityForResult(intention3, RECHERCHE_MOT);
                 break;
             case R.id.recherche_date:
                 Intent intention4 = new Intent(ListAccueil.this, RechercheDate.class);
-                startActivity(intention4);
+                startActivityForResult(intention4, RECHERCHE_DATE);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -134,6 +139,24 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
             });
             snackbar.setActionTextColor(Color.YELLOW);
             snackbar.show();
+        }
+    }
+
+    protected void onActivityResult(int codeRequete, int codeResultat, Intent intention){
+        if(codeRequete == RECHERCHE_DATE){
+            if(codeResultat == Activity.RESULT_OK){
+
+            }
+        }
+        if(codeRequete == RECHERCHE_MOT){
+            if(codeResultat == Activity.RESULT_OK){
+
+            }
+        }
+        if(codeRequete == RECHERCHE_PERSONNE){
+            if(codeResultat == Activity.RESULT_OK){
+
+            }
         }
     }
 

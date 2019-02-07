@@ -19,7 +19,7 @@
             android:text="@string/message_recherche_personne" />
 
         <EditText
-            android:id="@+id/saisie_nom_aliment"
+            android:id="@+id/saisie_personne"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:hint="@string/aide_recherche_personne" />
@@ -29,7 +29,8 @@
 	<Button
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/bouton_valider"/>
+		android:text="@string/bouton_valider"
+        android:onClick="clicSurValider"/>
 
 </LinearLayout>
 
