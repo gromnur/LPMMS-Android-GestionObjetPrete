@@ -1,6 +1,7 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,7 +36,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             viewForeground = view.findViewById(R.id.view_foreground);
             buttonViewOption = view.findViewById(R.id.textViewOptions);
         }
-
 
     }
 
@@ -78,8 +78,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.visualiser_pret:
+                                Intent intention = new Intent(context, VisuEmprunt.class);
+                                context.startActivity(intention);
                                 break;
                             case R.id.modifier_pret:
+                                Intent intention2 = new Intent(context, ModifEmprunt.class);
+                                context.startActivity(intention2);
                                 break;
                             case R.id.annuler:
                                 break;

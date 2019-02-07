@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".AjoutEmprunt"></activity>
+        <activity android:name=".ModifEmprunt"></activity>
+        <activity android:name=".VisuEmprunt"></activity>
+        <activity android:name=".RechercheDate"></activity>
+        <activity android:name=".RechercheMot"></activity>
+        <activity android:name=".RecherchePersonne"></activity>
     </application>
 
 </manifest>

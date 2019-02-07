@@ -71,20 +71,6 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo information = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
-        switch (item.getItemId()) {
-            case R.id.visualiser_pret:
-                break;
-            case R.id.modifier_pret:
-                break;
-            case R.id.annuler:
-                break;
-        }
-        return (super.onContextItemSelected(item));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,10 +88,16 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
                 startActivity(intention);
                 break;
             case R.id.recherche_personne:
+                Intent intention2 = new Intent(ListAccueil.this, RecherchePersonne.class);
+                startActivity(intention2);
                 break;
             case R.id.recherche_mot:
+                Intent intention3 = new Intent(ListAccueil.this, RechercheMot.class);
+                startActivity(intention3);
                 break;
             case R.id.recherche_date:
+                Intent intention4 = new Intent(ListAccueil.this, RechercheDate.class);
+                startActivity(intention4);
                 break;
         }
         return super.onOptionsItemSelected(item);
