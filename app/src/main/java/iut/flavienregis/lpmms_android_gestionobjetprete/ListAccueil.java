@@ -12,29 +12,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
@@ -82,14 +69,6 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         // add pass ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT as param
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
-
-    }
-
-
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        new MenuInflater(this).inflate(R.menu.menu_contextuel, menu);
     }
 
     @Override
@@ -100,9 +79,6 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
             case R.id.visualiser_pret:
                 break;
             case R.id.modifier_pret:
-                break;
-            case R.id.supprimer_pret:
-                adaptateur.remove(liste.get(information.position));
                 break;
             case R.id.annuler:
                 break;
@@ -155,7 +131,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
 
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, name + " a été supprimé !", Snackbar.LENGTH_LONG);
+                    .make(coordinatorLayout, "Le prêt de \"" + name + "\" a été supprimé !", Snackbar.LENGTH_LONG);
             snackbar.setAction("Annuler", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

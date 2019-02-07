@@ -1,8 +1,13 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,6 +26,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         public TextView name, description, date;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
+        public TextView buttonViewOption;
 
         public MyViewHolder(View view) {
             super(view);
@@ -30,7 +36,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             thumbnail = view.findViewById(R.id.thumbnail);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
+            buttonViewOption = view.findViewById(R.id.textViewOptions);
         }
+
+
     }
 
 
@@ -48,7 +57,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Item item = cartList.get(position);
         holder.name.setText(item.getDesignation());
         holder.description.setText(item.getDescription());
@@ -57,6 +66,41 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         Glide.with(context)
                 .load(item.getThumbnail())
                 .into(holder.thumbnail);
+
+        holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(context, holder.buttonViewOption);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.menu_contextuel);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.visualiser_pret:
+                                break;
+                            case R.id.modifier_pret:
+                                break;
+                            case R.id.annuler:
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
+
+            }
+        });
+    }
+
+    @Override
+    public void onViewRecycled(MyViewHolder holder) {
+        holder.itemView.setOnLongClickListener(null);
+        super.onViewRecycled(holder);
     }
 
     @Override

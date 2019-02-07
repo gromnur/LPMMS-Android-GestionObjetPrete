@@ -9,11 +9,6 @@
 	<item
 		android:id="@+id/modifier_pret"
 		android:title="@string/option_modifier" />
-
-	<item
-	    android:id="@+id/supprimer_pret"
-	    android:title="@string/option_supprimer" />	
-	    
      <item
 	    android:id="@+id/annuler"
 	    android:title="@string/option_annuler" />	
