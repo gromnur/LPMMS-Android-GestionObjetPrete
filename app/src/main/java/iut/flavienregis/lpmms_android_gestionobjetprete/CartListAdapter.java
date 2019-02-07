@@ -1,12 +1,9 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,11 +68,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             @Override
             public void onClick(View view) {
 
-                //creating a popup menu
+                //création du popup menu
                 PopupMenu popup = new PopupMenu(context, holder.buttonViewOption);
-                //inflating menu from xml resource
+                //inflate menu depuis les ressources xml
                 popup.inflate(R.menu.menu_contextuel);
-                //adding click listener
+                //ajout click listener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
@@ -90,17 +87,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
                         return false;
                     }
                 });
-                //displaying the popup
+                //affichage de la popup
                 popup.show();
 
             }
         });
-    }
-
-    @Override
-    public void onViewRecycled(MyViewHolder holder) {
-        holder.itemView.setOnLongClickListener(null);
-        super.onViewRecycled(holder);
     }
 
     @Override
@@ -110,15 +101,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
 
     public void removeItem(int position) {
         cartList.remove(position);
-        // notify the item removed by position
-        // to perform recycler view delete animations
-        // NOTE: don't call notifyDataSetChanged()
         notifyItemRemoved(position);
     }
 
     public void restoreItem(Item item, int position) {
         cartList.add(position, item);
-        // notify item added by position
         notifyItemInserted(position);
     }
 
