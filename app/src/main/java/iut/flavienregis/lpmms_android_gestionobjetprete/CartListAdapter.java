@@ -52,7 +52,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         final Item item = cartList.get(position);
         holder.name.setText(item.getName());
         holder.description.setText(item.getDescription());
-        holder.date.setText("₹" + item.getDate());
+        holder.date.setText(item.getDate());
 
         Glide.with(context)
                 .load(item.getThumbnail())
@@ -76,5 +76,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         cartList.add(position, item);
         // notify item added by position
         notifyItemInserted(position);
+    }
+
+    public void addItem(Item item) {
+        cartList.add(item);
+        notifyItemInserted(cartList.size() - 1 );
     }
 }

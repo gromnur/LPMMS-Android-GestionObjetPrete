@@ -15,6 +15,8 @@ import java.util.Date;
 
 public class AjoutEmprunt extends AppCompatActivity {
 
+    private GestionPretDAO gestionPret;
+
     private ImageView miniaturePhoto;
     private EditText designation;
     private EditText description;
@@ -22,7 +24,6 @@ public class AjoutEmprunt extends AppCompatActivity {
     private EditText prenom;
     private EditText commentaire;
     private EditText date;
-
     public static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
@@ -40,6 +41,7 @@ public class AjoutEmprunt extends AppCompatActivity {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         date.setText(simpleDateFormat.format(new Date()));
+        gestionPret = gestionPret.getInstanceDAO(this);
 
     }
 
@@ -58,13 +60,15 @@ public class AjoutEmprunt extends AppCompatActivity {
     }
 
     public void clicSurValider(View view) {
-        if (designation.getText().toString().length()==0){
-            Toast.makeText(this, "Erreur", Toast.LENGTH_LONG).show();
+        if (designation.getText().toString().length()==0 ||
+            nom.getText().toString().length()==0 ||
+            prenom.getText().toString().length()==0 ){
+            Toast.makeText(this, "Les champs designation, nom ou prenom ne peuvent pas etre null", Toast.LENGTH_LONG).show();
         } else {
             // enregistrer dans la BDD
+            gestionPret.createPret(designation.toString(), description.toString(), null, nom.toString(), prenom.toString(), commentaire.toString());
 
             // revenir sur la premiere activité
-
             Intent retoutList= new Intent(AjoutEmprunt.this, ListAccueil.class);
             startActivity(retoutList);
             finish();

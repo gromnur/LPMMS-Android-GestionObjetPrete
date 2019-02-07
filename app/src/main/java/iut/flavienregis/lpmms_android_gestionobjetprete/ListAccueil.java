@@ -30,6 +30,7 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,16 +41,16 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
 
     private ArrayList<String> liste;
 
-    private ArrayAdapter<String> adaptateur;
-
     private static final String TAG = ListAccueil.class.getSimpleName();
     private RecyclerView recyclerView;
     private List<Item> cartList;
     private CartListAdapter mAdapter;
     private CoordinatorLayout coordinatorLayout;
+    private ArrayAdapter adaptateur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_accueil);
 
@@ -59,6 +60,16 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         recyclerView = findViewById(R.id.recycler_view);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         cartList = new ArrayList<>();
+
+        // on recupère les element de la table pour les mettre dans la liste
+        cartList.add(new Item(1,"tele",
+                "ma tele",
+                "10/06/2017",
+                null,
+                "GOSSMANN",
+                "Thommas",
+                "Rend le moi vite"));
+
         mAdapter = new CartListAdapter(this, cartList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -75,6 +86,8 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
     }
+
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -133,7 +146,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof CartListAdapter.MyViewHolder) {
             // get the removed item name to display it in snack bar
-            String name = cartList.get(viewHolder.getAdapterPosition()).getName();
+            String name = cartList.get(viewHolder.getAdapterPosition()).getDesignation();
 
             // backup of removed item for undo purpose
             final Item deletedItem = cartList.get(viewHolder.getAdapterPosition());
