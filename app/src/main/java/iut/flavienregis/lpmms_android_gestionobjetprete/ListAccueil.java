@@ -62,13 +62,11 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         cartList = new ArrayList<>();
 
         // on recupère les element de la table pour les mettre dans la liste
-        cartList.add(new Item(1,"tele",
-                "ma tele",
-                "10/06/2017",
-                null,
-                "GOSSMANN",
-                "Thommas",
-                "Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
 
         mAdapter = new CartListAdapter(this, cartList);
 
@@ -157,8 +155,8 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
 
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, name + " removed from cart!", Snackbar.LENGTH_LONG);
-            snackbar.setAction("UNDO", new View.OnClickListener() {
+                    .make(coordinatorLayout, name + " a été supprimé !", Snackbar.LENGTH_LONG);
+            snackbar.setAction("Annuler", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 

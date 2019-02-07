@@ -42,7 +42,7 @@
             android:id="@+id/thumbnail"
             android:layout_width="@dimen/thumbnail"
             android:layout_height="@dimen/thumbnail"
-            android:layout_marginRight="@dimen/activity_padding_horizontal"
+            android:layout_marginEnd="@dimen/activity_padding_horizontal"
             android:scaleType="centerCrop" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:fontFamily="sans-serif-medium"
             android:maxLines="1"
             android:textColor="@color/item_name"
-            android:textSize="17dp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/description"
@@ -64,7 +64,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/thumbnail"
             android:textColor="@color/description"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/date"
