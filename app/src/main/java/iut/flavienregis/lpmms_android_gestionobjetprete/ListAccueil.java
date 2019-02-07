@@ -2,6 +2,7 @@ package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -34,7 +35,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
     private List<Item> cartList;
     private CartListAdapter mAdapter;
     private CoordinatorLayout coordinatorLayout;
-    private ArrayAdapter adaptateur;
+    GestionPretDAO bd = new GestionPretDAO(this);
 
     public final static int RECHERCHE_DATE = 0;
     public final static int RECHERCHE_MOT = 1;
@@ -53,12 +54,23 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         cartList = new ArrayList<>();
 
+        bd.open();
+
         // on recupère les element de la table pour les mettre dans la liste
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thommas","Rend le moi vite"));
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        Cursor curseur = bd.toutSelectionner();
+        while (curseur.moveToNext()) {
+            cartList.add(new Item(curseur.getInt(0), // id
+                                  curseur.getString(1), // desi
+                                  curseur.getString(2), // desci
+                                  curseur.getString(4), // date
+                                  curseur.getString(3), // photo
+                                  curseur.getString(5), // nom
+                                  curseur.getString(6), // prenom
+                                  curseur.getString(8))); // info supp
+        }
+        curseur.close();
+        bd.close();
+        // cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thomas","Rend le moi vite"));
 
         mAdapter = new CartListAdapter(this, cartList);
 

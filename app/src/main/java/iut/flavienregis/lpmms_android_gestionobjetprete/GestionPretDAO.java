@@ -54,7 +54,8 @@ public class GestionPretDAO {
     }
 
     public int deletePret(int id) {
-        return 0;
+        base.delete(GestionPret.NOM_TABLE_PRET, GestionPret.PRET_CLE +  " = ? ", new String[]{String.valueOf(id)} );
+        return id;
     }
 
     public int findByIdPret(int id) {
