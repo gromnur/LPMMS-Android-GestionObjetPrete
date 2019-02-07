@@ -1,6 +1,9 @@
 package iut.flavienregis.lpmms_android_gestionobjetprete;
 
-public class Item {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Item implements Parcelable {
     int id;
     String designation;
     String description;
@@ -20,6 +23,29 @@ public class Item {
         this.prenom = prenom;
         this.commentaire = commentaire;
     }
+
+    protected Item(Parcel in) {
+        id = in.readInt();
+        designation = in.readString();
+        description = in.readString();
+        date = in.readString();
+        thumbnail = in.readString();
+        nom = in.readString();
+        prenom = in.readString();
+        commentaire = in.readString();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -83,5 +109,24 @@ public class Item {
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+        parcel.writeInt(id);
+        parcel.writeString(designation);
+        parcel.writeString(description);
+        parcel.writeString(date);
+        parcel.writeString(thumbnail);
+        parcel.writeString(nom);
+        parcel.writeString(prenom);
+        parcel.writeString(commentaire);
+
     }
 }

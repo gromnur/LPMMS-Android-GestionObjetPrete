@@ -35,8 +35,10 @@
             android:text="@string/pret_libelle" />
 
         <EditText
-            android:id="@+id/ajout_libelle"
+            android:id="@+id/visu_designation"
             style="@style/ajout_edit_text"
+            android:enabled="false"
+            android:text=""
             />
     </TableRow>
 
@@ -47,9 +49,10 @@
             android:text="@string/pret_description" />
 
         <EditText
-            android:id="@+id/ajout_description"
+            android:id="@+id/visu_description"
             style="@style/ajout_edit_text"
             android:inputType="textMultiLine"
+            android:enabled="false"
             />
     </TableRow>
 
@@ -60,8 +63,9 @@
             android:text="@string/pret_nom" />
 
         <EditText
-            android:id="@+id/ajout_nom"
+            android:id="@+id/visu_nom"
             style="@style/ajout_edit_text"
+            android:enabled="false"
             />
     </TableRow>
 
@@ -72,8 +76,9 @@
             android:text="@string/pret_prenom" />
 
         <EditText
-            android:id="@+id/ajout_prenom"
+            android:id="@+id/visu_prenom"
             style="@style/ajout_edit_text"
+            android:enabled="false"
             />
     </TableRow>
 
@@ -84,7 +89,7 @@
             android:text="@string/pret_date" />
 
         <EditText
-            android:id="@+id/ajout_date"
+            android:id="@+id/visu_date"
             style="@style/ajout_edit_text"
             android:ems="10"
             android:inputType="date"
@@ -99,9 +104,10 @@
             android:text="@string/pret_commentaire" />
 
         <EditText
-            android:id="@+id/commentaire"
+            android:id="@+id/visu_commentaire"
             style="@style/ajout_edit_text"
             android:inputType="textMultiLine"
+            android:enabled="false"
             />
     </TableRow>
 

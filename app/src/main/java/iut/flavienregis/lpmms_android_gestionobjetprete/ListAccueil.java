@@ -54,7 +54,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         cartList = new ArrayList<>();
 
         // on recupère les element de la table pour les mettre dans la liste
-        cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
+        cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thommas","Rend le moi vite"));
         cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
         cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));
         cartList.add(new Item(1,"tele","ma tele","10/06/2017",null,"GOSSMANN","Thommas","Rend le moi vite"));

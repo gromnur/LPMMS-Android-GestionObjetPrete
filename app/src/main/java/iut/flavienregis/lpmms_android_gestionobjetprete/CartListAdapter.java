@@ -2,6 +2,7 @@ package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyViewHolder> {
     private Context context;
     private List<Item> cartList;
+    private Item item;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, description, date;
@@ -54,18 +56,18 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        final Item item = cartList.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        item = cartList.get(position);
         holder.name.setText(item.getDesignation());
         holder.description.setText(item.getDescription());
         holder.date.setText(item.getDate());
 
         Glide.with(context)
-                .load(item.getThumbnail())
-                .into(holder.thumbnail);
+                    .load(item.getThumbnail())
+                    .into(holder.thumbnail);
 
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
-            @Override
+                @Override
             public void onClick(View view) {
 
                 //création du popup menu
@@ -75,14 +77,16 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
                 //ajout click listener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
                             case R.id.visualiser_pret:
                                 Intent intention = new Intent(context, VisuEmprunt.class);
+                                intention.putExtra("item", item);
                                 context.startActivity(intention);
                                 break;
                             case R.id.modifier_pret:
                                 Intent intention2 = new Intent(context, ModifEmprunt.class);
+                                intention2.putExtra("item", item);
                                 context.startActivity(intention2);
                                 break;
                             case R.id.annuler:
