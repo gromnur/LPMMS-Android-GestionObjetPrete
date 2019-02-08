@@ -10,12 +10,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AjoutEmprunt extends AppCompatActivity {
 
     private GestionPretDAO gestionPret;
+
+    private byte[] photo;
 
     private ImageView miniaturePhoto;
     private EditText designation;
@@ -50,6 +53,9 @@ public class AjoutEmprunt extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+            photo = baos.toByteArray();
             miniaturePhoto.setImageBitmap(imageBitmap);
         }
     }
@@ -66,7 +72,7 @@ public class AjoutEmprunt extends AppCompatActivity {
             Toast.makeText(this, "Les champs designation, nom ou prenom ne peuvent pas etre null", Toast.LENGTH_LONG).show();
         } else {
             // enregistrer dans la BDD
-            gestionPret.createPret(designation.toString(), description.toString(), null, nom.toString(), prenom.toString(), commentaire.toString());
+            gestionPret.createPret(designation.getText().toString(), description.getText().toString(), photo, nom.getText().toString(), prenom.getText().toString(), commentaire.getText().toString());
 
             // revenir sur la premiere activité
             Intent retoutList= new Intent(AjoutEmprunt.this, ListAccueil.class);

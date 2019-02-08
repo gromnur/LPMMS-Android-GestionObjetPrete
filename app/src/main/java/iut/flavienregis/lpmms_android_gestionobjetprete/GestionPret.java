@@ -76,16 +76,6 @@ public class GestionPret extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATION_TABLE_PRET);
-
-        ContentValues enregistrement = new ContentValues();
-
-        enregistrement.put(PRET_DESIGNATION, "Pomme de terre");
-        enregistrement.put(PRET_DESCRIPTION, "vapeur");
-        enregistrement.put(PRET_NOM, "De Terre");
-        enregistrement.put(PRET_PRENOM, "Pomme");
-
-        db.insert(NOM_TABLE_PRET, PRET_DESIGNATION, enregistrement);
-
     }
 
     @Override

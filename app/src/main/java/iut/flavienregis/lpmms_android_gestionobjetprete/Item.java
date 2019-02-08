@@ -3,17 +3,17 @@ package iut.flavienregis.lpmms_android_gestionobjetprete;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Item implements Parcelable {
+public class Item {
     int id;
     String designation;
     String description;
     String date;
-    String thumbnail;
+    byte[] thumbnail;
     String nom;
     String prenom;
     String commentaire;
 
-    public Item(int id, String designation, String description, String date, String thumbnail, String nom, String prenom, String commentaire) {
+    public Item(int id, String designation, String description, String date, byte[] thumbnail, String nom, String prenom, String commentaire) {
         this.id = id;
         this.designation = designation;
         this.description = description;
@@ -24,28 +24,9 @@ public class Item implements Parcelable {
         this.commentaire = commentaire;
     }
 
-    protected Item(Parcel in) {
-        id = in.readInt();
-        designation = in.readString();
-        description = in.readString();
-        date = in.readString();
-        thumbnail = in.readString();
-        nom = in.readString();
-        prenom = in.readString();
-        commentaire = in.readString();
+    public Item() {
+
     }
-
-    public static final Creator<Item> CREATOR = new Creator<Item>() {
-        @Override
-        public Item createFromParcel(Parcel in) {
-            return new Item(in);
-        }
-
-        @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
 
     public int getId() {
         return id;
@@ -79,11 +60,11 @@ public class Item implements Parcelable {
         this.date = date;
     }
 
-    public String getThumbnail() {
+    public byte[] getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(String thumbnail) {
+    public void setThumbnail(byte[] thumbnail) {
         this.thumbnail = thumbnail;
     }
 
@@ -111,22 +92,4 @@ public class Item implements Parcelable {
         this.commentaire = commentaire;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-        parcel.writeInt(id);
-        parcel.writeString(designation);
-        parcel.writeString(description);
-        parcel.writeString(date);
-        parcel.writeString(thumbnail);
-        parcel.writeString(nom);
-        parcel.writeString(prenom);
-        parcel.writeString(commentaire);
-
-    }
 }

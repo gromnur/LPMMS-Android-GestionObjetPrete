@@ -116,7 +116,7 @@
     <TableRow>
 
         <ImageView
-            android:id="@+id/miniature_photo"
+            android:id="@+id/miniature_photo_modif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_span="2"/>
@@ -129,6 +129,7 @@
             android:layout_height="wrap_content"
             android:text="@string/bouton_valider"
             android:layout_span="2"
+            android:onClick="clicSurModifier"
             />
     </TableRow>
 

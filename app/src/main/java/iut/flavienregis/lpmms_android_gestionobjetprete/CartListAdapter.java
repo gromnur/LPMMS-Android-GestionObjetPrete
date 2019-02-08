@@ -2,9 +2,11 @@ package iut.flavienregis.lpmms_android_gestionobjetprete;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Parcelable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,9 +23,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     private Context context;
     private List<Item> cartList;
     private Item item;
+    GestionPretDAO bd;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, description, date;
+        public TextView name, description, date, idItem;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
         public TextView buttonViewOption;
@@ -37,6 +40,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
             buttonViewOption = view.findViewById(R.id.textViewOptions);
+            idItem = view.findViewById(R.id.idItem);
         }
 
     }
@@ -52,6 +56,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.casier_liste, parent, false);
 
+        bd = GestionPretDAO.getInstanceDAO(context);
+
         return new MyViewHolder(itemView);
     }
 
@@ -61,6 +67,9 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         holder.name.setText(item.getDesignation());
         holder.description.setText(item.getDescription());
         holder.date.setText(item.getDate());
+        holder.thumbnail.setImageBitmap(BitmapFactory.decodeByteArray(item.getThumbnail(), 0, item.getThumbnail().length));
+        Log.println(Log.DEBUG, "ID", item.getId()+"");
+        holder.idItem.setText(item.getId()+"");
 
         Glide.with(context)
                     .load(item.getThumbnail())
@@ -69,7 +78,6 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
                 @Override
             public void onClick(View view) {
-
                 //création du popup menu
                 PopupMenu popup = new PopupMenu(context, holder.buttonViewOption);
                 //inflate menu depuis les ressources xml
@@ -81,12 +89,12 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
                         switch (menuItem.getItemId()) {
                             case R.id.visualiser_pret:
                                 Intent intention = new Intent(context, VisuEmprunt.class);
-                                intention.putExtra("item", item);
+                                intention.putExtra("item", holder.idItem.getText().toString());
                                 context.startActivity(intention);
                                 break;
                             case R.id.modifier_pret:
                                 Intent intention2 = new Intent(context, ModifEmprunt.class);
-                                intention2.putExtra("item", item);
+                                intention2.putExtra("item", holder.idItem.getText().toString());
                                 context.startActivity(intention2);
                                 break;
                             case R.id.annuler:
@@ -110,11 +118,13 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     public void removeItem(int position) {
         cartList.remove(position);
         notifyItemRemoved(position);
+        bd.deletePret(item.getId());
     }
 
     public void restoreItem(Item item, int position) {
         cartList.add(position, item);
         notifyItemInserted(position);
+        bd.createPret(item.getDesignation(), item.getDescription(), null, item.getNom(), item.getPrenom(), item.getCommentaire());
     }
 
     public void addItem(Item item) {

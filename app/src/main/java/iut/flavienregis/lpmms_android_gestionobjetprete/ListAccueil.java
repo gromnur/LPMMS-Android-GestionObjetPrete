@@ -63,13 +63,13 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
                                   curseur.getString(1), // desi
                                   curseur.getString(2), // desci
                                   curseur.getString(4), // date
-                                  curseur.getString(3), // photo
+                                  curseur.getBlob(3), // photo
                                   curseur.getString(5), // nom
                                   curseur.getString(6), // prenom
                                   curseur.getString(8))); // info supp
         }
         curseur.close();
-         cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thomas","Rend le moi vite"));
+        // cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thomas","Rend le moi vite"));
 
         mAdapter = new CartListAdapter(this, cartList);
 

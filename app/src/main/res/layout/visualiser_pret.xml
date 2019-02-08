@@ -22,7 +22,7 @@
     <TableRow>
 
         <ImageView
-            android:id="@+id/miniature_photo"
+            android:id="@+id/miniature_photo_visu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_span="2"/>
