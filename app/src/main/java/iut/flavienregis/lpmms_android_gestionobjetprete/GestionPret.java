@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class GestionPret extends SQLiteOpenHelper {
 
-    private static GestionPret instancePret;
+    private static GestionPret instancePret = null
+            ;
 
     public static final String PRET_CLE = "_id";
 
@@ -39,9 +40,9 @@ public class GestionPret extends SQLiteOpenHelper {
                     + PRET_NOM + ", "
                     + PRET_PRENOM + ", "
                     + PRET_TEL + ", "
-                    + PRET_INFO_SUPP + ", "
+                    + PRET_INFO_SUPP
                     + " from " + NOM_TABLE_PRET
-                    + " order by desc" + PRET_DATE;
+                    + " order by " + PRET_DATE + " desc";
 
     public static final String CREATION_TABLE_PRET =
             "Create table " + NOM_TABLE_PRET + " ( "

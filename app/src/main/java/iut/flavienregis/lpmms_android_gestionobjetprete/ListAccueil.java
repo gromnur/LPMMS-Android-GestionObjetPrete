@@ -35,7 +35,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
     private List<Item> cartList;
     private CartListAdapter mAdapter;
     private CoordinatorLayout coordinatorLayout;
-    GestionPretDAO bd = new GestionPretDAO(this);
+    GestionPretDAO bd;
 
     public final static int RECHERCHE_DATE = 0;
     public final static int RECHERCHE_MOT = 1;
@@ -47,14 +47,14 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_accueil);
 
+        bd = GestionPretDAO.getInstanceDAO(this);
+
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         recyclerView = findViewById(R.id.recycler_view);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         cartList = new ArrayList<>();
-
-        bd.open();
 
         // on recupère les element de la table pour les mettre dans la liste
         Cursor curseur = bd.toutSelectionner();
@@ -69,8 +69,7 @@ public class ListAccueil extends AppCompatActivity implements RecyclerItemTouchH
                                   curseur.getString(8))); // info supp
         }
         curseur.close();
-        bd.close();
-        // cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thomas","Rend le moi vite"));
+         cartList.add(new Item(1,"tele","ma tele","10/06/2017","","GOSSMANN","Thomas","Rend le moi vite"));
 
         mAdapter = new CartListAdapter(this, cartList);
 

@@ -23,6 +23,7 @@ public class GestionPretDAO {
     private SQLiteDatabase base;
 
     private GestionPretDAO(Context context) {
+
         gestionnaireBase = GestionPret.getInstance(context, NOM_BD, null, VERSION);
         base = gestionnaireBase.getWritableDatabase();
     }
